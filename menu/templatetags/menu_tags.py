@@ -1,14 +1,13 @@
 from django import template
-from ..models import Menu, MenuItem
+from ..models import Menu
 
 register = template.Library()
 
 
 @register.inclusion_tag("menu/menu.html")
-def draw_menu(menu_name, slug=None, is_active=True):
+def draw_menu(menu_name, is_active=True):
     try:
         obj = Menu.objects.get(title__iexact=menu_name)
-
     except Menu.DoesNotExist:
         return {"header": f'Меню {menu_name} не существует'}
 
