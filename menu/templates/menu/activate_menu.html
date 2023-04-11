@@ -1,0 +1,22 @@
+{% extends 'menu/menu.html' %}
+
+
+{% block activate %}
+
+<!--<div>-->
+<!--  <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>-->
+
+<!--  <div>-->
+<!--    <ul>-->
+
+      {% for item in items %}
+          <li>
+            <a href="#">{{ item }}</a>
+          </li>
+      {% endfor %}
+
+<!--    </ul>-->
+<!--  </div>-->
+<!--</div>-->
+
+{% endblock %}
