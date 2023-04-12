@@ -5,7 +5,7 @@ register = template.Library()
 
 
 @register.inclusion_tag("menu/menu.html")
-def draw_menu(menu_name, is_active=True):
+def draw_menu(menu_name):
     try:
         obj = Menu.objects.get(title__iexact=menu_name)
     except Menu.DoesNotExist:
@@ -15,9 +15,7 @@ def draw_menu(menu_name, is_active=True):
         "id": obj.pk,
         "url": obj.get_absolute_url(),
         "header": obj.title,
+        "items": obj.children.all(),
     }
-
-    if is_active:
-        context["items"] = obj.children.all()
 
     return context
